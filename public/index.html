@@ -2,40 +2,451 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8" />
-  <link rel="icon" href="%PUBLIC_URL%/favicon.png" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#000000" />
-  <meta name="description" content="Web site created using create-react-app" />
-  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-  <title>S0umyajit | Portfolio</title>
-  <meta name="description" content="Self Developed personal website build with React.js">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arpita Gupta | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-image: url('../src/Assets/home-bg.jpg'); /* Replace with your image path */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at top left, #2b445d, #1c1c3c);
+      color: white;
+      overflow-x: hidden;
+      transition: background 0.3s, color 0.3s;
+    }
 
-  <!-- Google / Search Engine Tags -->
-  <meta itemprop="name" content="S0umyajit | Portfolio">
-  <meta itemprop="description" content="Self Developed personal website build with React.js">
-  <meta itemprop="image"
-    content="https://raw.githubusercontent.com/soumyajit4419/Portfolio/master/Images/readme-img.png?token=AK7VCIF5RYEUZZAURELPTAC76U6AK">
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background: rgba(0, 0, 0, 0.8);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
 
-  <!-- Facebook Meta Tags -->
-  <meta property="og:url" content="https://soumyajit.vercel.app">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="S0umyajit | Portfolio">
-  <meta property="og:description" content="Self Developed personal website build with React.js">
-  <meta property="og:image"
-    content="https://raw.githubusercontent.com/soumyajit4419/Portfolio/master/Images/readme-img.png?token=AK7VCIF5RYEUZZAURELPTAC76U6AK">
+    nav ul {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
 
-  <!-- Twitter Meta Tags -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="S0umyajit | Portfolio">
-  <meta name="twitter:description" content="Self Developed personal website build with React.js">
-  <meta name="twitter:image"
-    content="https://raw.githubusercontent.com/soumyajit4419/Portfolio/master/Images/readme-img.png?token=AK7VCIF5RYEUZZAURELPTAC76U6AK">
+    nav ul li {
+      margin: 0 15px;
+      position: relative;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #9b59b6;
+    }
+
+    nav ul li:hover::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background: #9b59b6;
+      bottom: -5px;
+      left: 0;
+    }
+
+    .theme-toggle {
+      cursor: pointer;
+      color: white;
+      font-weight: bold;
+      background: none;
+      border: 2px solid white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .theme-toggle:hover {
+      background: #9b59b6;
+      color: white;
+    }
+
+    /* Responsive Navbar */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      background: white;
+      height: 3px;
+      margin: 5px;
+      width: 25px;
+      transition: all 0.3s;
+    }
+
+    .menu-opened .menu-toggle span:nth-child(1) {
+      transform: rotate(45deg) translateY(7px);
+    }
+
+    .menu-opened .menu-toggle span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-opened .menu-toggle span:nth-child(3) {
+      transform: rotate(-45deg) translateY(-7px);
+    }
+
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+      background: rgba(0, 0, 0, 0.9);
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      z-index: 999;
+      padding: 20px;
+      animation: slideIn 0.5s;
+    }
+
+    .mobile-nav ul {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+    }
+
+    .mobile-nav ul li {
+      margin: 15px 0;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-100%);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: flex;
+      }
+
+      nav ul {
+        display: none;
+      }
+    }
+
+    .hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 100vh;
+      padding: 0 50px;
+      margin-top: 60px;
+    }
+
+    .hero-content {
+      max-width: 50%;
+    }
+
+    .hero-content h1 {
+      font-size: 3.5rem;
+      margin: 0;
+    }
+
+    .hero-content h2 {
+      font-size: 2rem;
+      color: #9b59b6;
+      margin: 20px 0;
+      min-height: 50px;
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
+      margin: 20px 0;
+    }
+
+
+    .about-me {
+      background-color: #333;
+      color: white;
+      padding: 50px 20px;
+    }
+
+    .about-me h1 {
+      font-size: 2.5rem;
+      color: #b59eff;
+    }
+
+    .about-me p {
+      line-height: 1.8;
+      margin: 1rem 0;
+    }
+
+    .about-me ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .about-me ul li {
+      margin: 0.5rem 0;
+      display: flex;
+      align-items: center;
+    }
+
+    .about-me ul li::before {
+      content: '\1F4A1';
+      margin-right: 10px;
+      color: #b59eff;
+    }
+
+    .about-me blockquote {
+      margin-top: 20px;
+      font-style: italic;
+      color: #b59eff;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #1c1c3c;
+    }
+
+    .light-theme {
+      background: white;
+      color: black;
+    }
+
+    .light-theme nav {
+      background: rgba(255, 255, 255, 0.8);
+    }
+
+    .light-theme nav ul li a {
+      color: black;
+    }
+    nav .logo img {
+      height: 60px;
+      width: auto;
+    }
+
+    .profile-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .profile-container img {
+      height: 500px; /* Adjust height as needed */
+      width: 500px; /* Adjust width as needed */
+      object-fit: cover; /* Ensures the image fits perfectly */
+      border-radius: 50%; /* Makes it circular */
+      border: 5px solid white; /* Optional border for aesthetics */
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Adds a subtle shadow */
+    }
+    .collab-button {
+    display: inline-block;
+    background-color: #9b59b6;
+    color: white;
+    font-size: 16px;
+    padding: 12px 25px;
+    margin: 10px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+
+  .collab-button:hover {
+    background-color: #8e44ad;
+    transform: translateY(-3px);
+  }
+
+  .collab-button:active {
+    transform: translateY(0);
+  }
+  .img  {
+  transition: transform 0.3s ease, box-shadow 4s ease;
+}
+.img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+  </style>
 </head>
 
 <body>
-  <noscript>You need to enable JavaScript to run this app.</noscript>
-  <div id="root"></div>
+  <nav>
+    <div class="logo">
+    <img src="../src/Assets/logo.png">
+    </div>
+    <div class="menu-toggle" id="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="skills.html">Skills</a></li>
+      <li><a href="projects.html">My Projects</a></li>
+      <li><a href="education.html">Education</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+    <button class="theme-toggle" id="theme-toggle">Dark Theme</button>
+  </nav>
+
+  <div class="mobile-nav" id="mobile-nav">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="skills.html">Skills</a></li>
+      <li><a href="projects.html">My Projects</a></li>
+      <li><a href="education.html">Education</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+  </div>
+
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1>Hi There! <span>👋🏻</span></h1>
+      <h2>I'm Arpita Gupta</h2>
+      <h2 class="dynamic-text" id="dynamic-text">Freelancer</h2>
+      <p>I am a passionate developer eager to take on challenging projects and deliver exceptional results. Let's work together!</p>
+    </div>
+      <div class="profile-container">
+      <img src="../src/Assets/profile.jpg" alt="Profile Picture">
+      </div>
+    
+  </section>
+
+  <section id="collab" style="background: url('path-to-your-image.jpg') no-repeat center center/cover; padding: 50px 0; color: white; position: relative;">
+    <div class="container" style="display: flex; justify-content: center; align-items: center; text-align: center;">
+      <!-- Image of Freelancer in a Circle -->
+      <div style="flex: 1; text-align: left;">
+        <img src="../src/Assets/freelance.jpeg" alt="Freelancer" style="border-radius: 50%; width: 450px; height: 450px; object-fit: cover; margin-right: 30px; border: 4px solid #c084f5;">
+      </div>
+  
+      <!-- Text and Buttons Section -->
+      <div style="flex: 2;">
+        <h1 style="font-size: 3rem; color: #c084f5;">Collaborate with Me</h1>
+        <p style="font-size: 18px; max-width: 600px; margin: 0 auto; padding: 20px;">
+          Looking for a skilled web developer to bring your project to life? I'm available for freelance projects and would love to work with you! Whether you need a portfolio, e-commerce site, or custom web solution, I can help you achieve your vision. Let's collaborate and create something amazing.
+        </p>
+        <div style="margin-top: 30px;">
+          <a href="https://www.fiverr.com/users/arpitagupta25" target="_blank" class="collab-button">Fiverr</a>
+          <a href="https://www.upwork.com/freelancers/~01f51af91c79e78799?mp_source=share" target="_blank" class="collab-button">Upwork</a>
+          <a href="https://www.freelancer.com/u/arpitagupta25" target="_blank" class="collab-button">Freelancer</a>
+          <a href="mailto:arpitagupta2504@gmail.com" class="collab-button">Email Me</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <br>
+  <br>
+  <br>
+
+  <section id="about">
+    <h1 style="font-size: 3rem;"><strong> Know Who <span style="color: #c084f5;">I 'm</span></strong></h1>
+
+
+    <p>
+      Hi Everyone, I am <span style="color: #6a5acd; font-weight: bold;">Arpita Gupta</span>, an enthusiastic engineering student from <strong>Mumbai</strong>
+      .  I am passionate about freelancing, particularly in web development.
+    </p>
+    <p>
+      Beyond academics, I thrive on challenges that allow me to innovate and create. <br>Some of my favorite activities include:
+    </p>
+    <ul>
+      <li>🖥️ Coding and solving problems</li>
+      <li>📚 Sharing knowledge through blogging and open-source contributions</li>
+      <li>🌍 Exploring new technologies</li>
+      <li>🏋️‍♀️ Staying active through adventure</li>
+    </ul>
+    <p>
+      I strongly believe in the motto: 
+      <q><em><span style="color: #9b59b6;">"Innovation is the key to unlocking a better future."</span></em></q>
+    </p>
+  </section>
+  
+
+  <footer>
+    &copy; Arpita Gupta. Made with Love💜.
+    
+  </footer>
+
+  <script>
+   const roles = ["Freelancer", "Web Developer", "Open Source Contributor"];
+    let index = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+
+    const dynamicText = document.getElementById("dynamic-text");
+    const typingSpeed = 150; // Speed for typing and erasing (uniform timing)
+
+    function typeWriter() {
+      const currentRole = roles[index];
+
+      if (isDeleting) {
+        dynamicText.textContent = currentRole.substring(0, charIndex--);
+      } else {
+        dynamicText.textContent = currentRole.substring(0, charIndex++);
+      }
+
+      // Transition conditions
+      if (!isDeleting && charIndex === currentRole.length) {
+        isDeleting = true;
+        setTimeout(typeWriter, 1000); // Pause after completing the word
+        return;
+      }
+
+      if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        index = (index + 1) % roles.length; // Move to the next role
+      }
+
+      setTimeout(typeWriter, typingSpeed); // Maintain uniform speed
+    }
+
+    typeWriter();
+
+    const themeToggle = document.getElementById("theme-toggle");
+    themeToggle.addEventListener("click", () => {
+      document.body.classList.toggle("light-theme");
+    });
+
+    const menuToggle = document.getElementById("menu-toggle");
+    const mobileNav = document.getElementById("mobile-nav");
+
+    menuToggle.addEventListener("click", () => {
+      mobileNav.style.display = mobileNav.style.display === "flex" ? "none" : "flex";
+      menuToggle.classList.toggle("menu-opened");
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!mobileNav.contains(e.target) && !menuToggle.contains(e.target)) {
+        mobileNav.style.display = "none";
+        menuToggle.classList.remove("menu-opened");
+      }
+    });
+  </script>
 </body>
 
 </html>
