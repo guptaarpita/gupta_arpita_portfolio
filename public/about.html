@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Me</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    /* Styles are similar to those included above in the home page */
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at top left, #2c3e50, #1c1c3c);
+      color: white;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Container setup for side-by-side content */
+    .container {
+      display: flex;
+      max-width: 1200px;
+      width: 90%;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 2rem; /* Adds space between the text and the image */
+      margin: 2rem auto;
+    }
+
+    .content {
+      max-width: 600px;
+    }
+
+    .content h1 {
+      font-size: 2.5rem;
+      color: #b59eff;
+    }
+
+    .content p {
+      line-height: 1.8;
+      margin: 1rem 0;
+    }
+
+    .content ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .content ul li {
+      margin: 0.5rem 0;
+      display: flex;
+      align-items: center;
+    }
+
+    .content ul li::before {
+      content: '\1F4A1';
+      margin-right: 10px;
+      color: #b59eff;
+    }
+
+    .content blockquote {
+      margin-top: 20px;
+      font-style: italic;
+      color: #b59eff;
+    }
+
+    /* Styling for the image container */
+    .image-container {
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .image-container img {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div><strong>AG</strong></div>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="#projects">My Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#resume">Resume</a></li>
+      <li><a href="#contact">Contact Us</a></li>
+    </ul>
+    <button class="theme-toggle" id="theme-toggle">Dark Theme</button>
+  </nav>
+
+  <div class="container">
+    <div class="content">
+      <h1>Know Who I'M</h1>
+      <p>Hi Everyone, I am <strong>Arpita Gupta</strong> from <strong>Mumbai</strong>.<br>
+        I am currently employed as a <strong>Software Engineer</strong>.<br>
+        I have completed <strong>Bachelor of Engineering</strong> at <strong>Usha Mittal Institute of Technology</strong>.</p>
+      <p>Apart from coding, some other activities that I love to do:</p>
+      <ul>
+        <li>Playing Games</li>
+        <li>Writing Tech Blogs</li>
+        <li>Travelling</li>
+      </ul>
+      <blockquote>"The best way to predict the future is to create it."</blockquote>
+    </div>
+    
+  </div>
+  
+  
+</body>
+
+</html>
